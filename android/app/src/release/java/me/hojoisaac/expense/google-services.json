@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "559944022438",
+    "firebase_url": "https://expense-ec0ce-default-rtdb.firebaseio.com",
+    "project_id": "expense-ec0ce",
+    "storage_bucket": "expense-ec0ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559944022438:android:96f3ce811acaeab98b3767",
+        "android_client_info": {
+          "package_name": "me.hojoisaac.expense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559944022438-qevaflis2kt49k97ppt675amonnmsn2l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBifFlrcIO5FbIYvvxRPf8wJHK_nBOlxj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559944022438-qevaflis2kt49k97ppt675amonnmsn2l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
