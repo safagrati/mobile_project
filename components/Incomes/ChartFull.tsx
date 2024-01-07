@@ -21,7 +21,7 @@ export default function ChartFull({ incomeAmount }: { incomeAmount: number[] }) 
                 }}
                 width={Dimensions.get("window").width - 50} // from react-native
                 height={200}
-                yAxisLabel="₦"
+                yAxisLabel="DT"
                 yAxisSuffix="k"
                 yAxisInterval={1} // optional, defaults to 1
                 chartConfig={{

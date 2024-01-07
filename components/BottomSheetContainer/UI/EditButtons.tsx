@@ -5,7 +5,12 @@ import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
 import {
   deleteExpense,
   updateExpense,
+
 } from "../../../redux/slice/expenseSlice";
+import {
+  deleteIncome,
+  updateIncome,
+} from "../../../redux/slice/incomeSlice";
 import { closeModal } from "../../../redux/slice/modalSlice";
 import { deleteExpenseOnline } from "../../../util/http";
 
@@ -34,6 +39,7 @@ export default function EditButtons({
     dispatch(deleteExpense({ id: modalState.id || "" }));
     dispatch(closeModal());
   };
+
 
   return (
     <View style={styles.buttonContainer}>
@@ -71,3 +77,52 @@ const styles = StyleSheet.create({
     gap: 2,
   },
 });
+
+export function EditButtonsIncome({
+  updateIncomeHandler,
+}: {
+  updateIncomeHandler: () => void;
+}) {
+  const dispatch = useAppDispatch();
+  const modalState = useAppSelector((state) => state.modal);
+
+  const deleteIncomeHandler = async () => {
+    //console.log(modalState.id, "deleted");
+    firestore()
+      .collection("incomes")
+      .doc(auth().currentUser?.uid)
+      .collection(new Date().getFullYear().toString())
+      .doc(modalState.id || "")
+      .delete()
+      .then(() => {
+        //console.log('deleted')
+      });
+    dispatch(deleteIncome({ id: modalState.id || "" }));
+    dispatch(closeModal());
+  };
+
+
+  return (
+    <View style={styles.buttonContainer}>
+      <Button
+        onPress={deleteIncomeHandler}
+        icon={({ color, size }) => <TrashIcon color={color} size={size} />}
+        mode="text"
+        textColor="#FF2A29"
+        style={{ borderRadius: 10 }}
+      >
+        Delete
+      </Button>
+      <Button
+        onPress={updateIncomeHandler}
+        labelStyle={{ color: "white" }}
+        icon={({ color, size }) => <ArrowRight color={color} size={size} />}
+        mode="contained"
+        contentStyle={{ flexDirection: "row-reverse" }}
+        style={{ borderRadius: 10, backgroundColor: "#00BA62" }}
+      >
+        Update
+      </Button>
+    </View>
+  );
+}

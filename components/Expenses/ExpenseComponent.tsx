@@ -18,7 +18,7 @@ export default function ExpenseComponent({
   const expenseSum = expenses.reduce((acc, curr) => acc + curr.amount, 0);
   const formattedExpenseSum = new Intl.NumberFormat("en-NG", {
     style: "currency",
-    currency: "NGN",
+    currency: "TND",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(expenseSum);
@@ -43,7 +43,7 @@ export default function ExpenseComponent({
       </View>
       {expenses.length > 0 ? (
         <ExpenseList
-        periodName={periodName}
+          periodName={periodName}
           expenses={expenses}
           ListHeaderComponent={ListHeaderComponent}
         />

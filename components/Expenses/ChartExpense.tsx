@@ -27,7 +27,7 @@ export default function Chart({
           ],
           datasets: [
             {
-              data: amountPerDay.length> 0 ? amountPerDay : [0]
+              data: amountPerDay.length > 0 ? amountPerDay : [0]
             },
           ],
         }}
@@ -35,7 +35,7 @@ export default function Chart({
         height={height}
         yAxisInterval={1}
         withHorizontalLabels={withHorizontalLabels}
-        yAxisLabel="₦"
+        yAxisLabel="DT"
         yAxisSuffix="k"
         // optional, defaults to 1
         chartConfig={{

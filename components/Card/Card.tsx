@@ -1,8 +1,40 @@
 import { ImageBackground, View, Text, StyleSheet } from "react-native";
-import Chart from "../Expenses/Chart";
+import Chart from "../Expenses/ChartExpense";
 import { Dimensions } from "react-native";
 
-export default function Card({
+export function CardIncome({
+  amountPerDay,
+  totalEarned,
+}: {
+  amountPerDay: number[];
+  totalEarned: string;
+}) {
+  const width = Dimensions.get("window").width;
+  return (
+    <View style={{ width, alignItems: "center" }}>
+      <ImageBackground
+        resizeMode="cover"
+        imageStyle={{ opacity: 1 }}
+        style={style.frontBox}
+        source={require("../../assets/images/box-cut.webp")}
+      >
+        <Text style={style.header}>Total Earned (This week)</Text>
+
+        <Text style={style.money}>{totalEarned || 'TND'}</Text>
+        <View style={[style.chartContainer, { width: width * 0.75 }]}>
+          <Chart
+            height={100}
+            width={width * 0.7}
+            withHorizontalLabels={false}
+            amountPerDay={amountPerDay}
+          />
+        </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+export function CardExpense({
   amountPerDay,
   totalSpent,
 }: {
@@ -20,9 +52,9 @@ export default function Card({
       >
         <Text style={style.header}>Total Spent (This week)</Text>
 
-        <Text style={style.money}>{totalSpent || '₦0'}</Text>
+        <Text style={style.money}>{totalSpent || 'TND'}</Text>
         <View style={[style.chartContainer, { width: width * 0.75 }]}>
-        <Chart
+          <Chart
             height={100}
             width={width * 0.7}
             withHorizontalLabels={false}

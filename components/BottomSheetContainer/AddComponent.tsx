@@ -38,7 +38,7 @@ export default function AddComponent() {
   const width = Dimensions.get("screen").width;
   const [isFetching, setIsFetching] = useState(false);
   const expense = useAppSelector((state) => state.expense.expenses);
-  const income = useAppSelector((state) => state.income.incomes);
+
 
 
   const dispatch = useAppDispatch();
@@ -170,7 +170,7 @@ export default function AddComponent() {
             label="Expense Name"
           />
           <InputText
-            icon={"₦"}
+            icon={"DT"}
             invalid={!content.amount.isValid}
             value={content.amount.value}
             onChange={handleChange.bind(null, "amount")}

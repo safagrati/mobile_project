@@ -7,11 +7,26 @@ import { groupedExpensesTotal, makeAmountList } from "../util/groupbyMonth";
 
 export default function AllExpenses() {
   const expensesList = useAppSelector((state) => state.expense.expenses);
-  const newExpense = [...expensesList];
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+
+  // Filter expenses for the last 12 months
+  const newExpense = expensesList.filter(expense => {
+    const expenseDate = new Date(expense.date);
+    const expenseYear = expenseDate.getFullYear();
+    const expenseMonth = expenseDate.getMonth() + 1;
+
+    return (
+      (currentYear - expenseYear === 1 && expenseMonth >= currentMonth) ||
+      (currentYear - expenseYear === 0 && currentMonth - expenseMonth <= 11)
+    );
+  });
+
   const expenseAmountPerMonth = makeAmountList(newExpense);
   const sortedExpense = newExpense.sort(
     (a, b) => Number(b.date) - Number(a.date)
   );
+
   return (
     <View style={styles.root}>
       <View style={styles.allExpensesContainer}>
@@ -20,7 +35,7 @@ export default function AllExpenses() {
       <View style={styles.main}>
         <ExpenseComponent
           expenses={sortedExpense}
-          periodName={`📅 ${new Date().getFullYear().toString()}`}
+          periodName="Last 12 Months"
           ListHeaderComponent={
             <ChartFull expenseAmount={expenseAmountPerMonth} />
           }
@@ -29,6 +44,7 @@ export default function AllExpenses() {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   root: {
     flex: 1,

@@ -10,6 +10,7 @@ import AllExpenses from "../screens/AllExpenses";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DarkTheme, NavigationContainer } from "@react-navigation/native";
 import Home from "../screens/Home";
+
 import AddNewExpenseButton from "../components/UI/AddNewExpenseButton";
 import {
   BackIcon,
@@ -17,6 +18,10 @@ import {
   HomeIcon,
   LogoutIcon,
   ProfileIcon,
+  IncomeIcon,
+  ExpenseIcon,
+  NewspaperIcon,
+
 } from "../components/icons";
 import { BottomSheetContainer } from "../components/BottomSheet/BottomSheet";
 
@@ -42,9 +47,12 @@ import IconButton from "../components/UI/IconButton";
 import { StatusBar } from "expo-status-bar";
 import Toast from "react-native-toast-message";
 import { toastConfig } from "../components/UI/CustomToastConfig";
+import Incomes from "../screens/Incomes";
 
 import BlurComponent from "../components/blurView/blurComponent";
-import Incomes from "../screens/Incomes";
+import NewsComponent from "../screens/News";
+import React from "react";
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 // const Tab = createBottomTabNavigator();
 
@@ -95,24 +103,11 @@ function BottomTabNavigator() {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({ color }) => <HomeIcon size={30} color={color} />,
-          // headerTitle: "Home",
-          // headerTransparent: true,
-          // headerPressColor: "#7B5D5D",
-          // headerTintColor: "#000000",
+          tabBarIcon: ({ color }) => <ExpenseIcon />,
+
         }}
       />
-      <Tab.Screen
-        name="Incomes"
-        component={Home}
-        options={{
-          tabBarIcon: ({ color }) => <HomeIcon size={30} color={color} />,
-          // headerTitle: "Home",
-          // headerTransparent: true,
-          // headerPressColor: "#7B5D5D",
-          // headerTintColor: "#000000",
-        }}
-      />
+
 
       <Tab.Screen
         name="AllExpenses"
@@ -122,6 +117,14 @@ function BottomTabNavigator() {
           // headerTransparent: true,
 
           tabBarIcon: ({ color }) => <CalendarIcon size={30} color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="News"
+        component={NewsComponent}
+        options={{
+          tabBarIcon: ({ color }) => <NewspaperIcon size={30} color={color} />,
+
         }}
       />
     </Tab.Navigator>

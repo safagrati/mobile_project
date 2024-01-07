@@ -1,6 +1,6 @@
 import { View, StyleSheet, Button } from "react-native";
 
-import AnalyticsCard from "../components/Card/AnalyticsCard";
+import { AnalyticsCardExpense } from "../components/Card/AnalyticsCard";
 
 import ExpenseComponent from "../components/Expenses/ExpenseComponent";
 
@@ -8,7 +8,6 @@ import { useAppSelector, useAppDispatch } from "../redux/hooks/hooks";
 import {
   filterExpenseForCurrentWeek,
   getAmountsPerDay,
-  getAmountsPerDayIncomes,
   getLessThanDate,
   makeAmountList,
 } from "../util/date";
@@ -38,7 +37,7 @@ export default function Home() {
   );
   const formattedExpenseSum = new Intl.NumberFormat("en-NG", {
     style: "currency",
-    currency: "NGN",
+    currency: "TND",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(expenseSum);
@@ -97,7 +96,7 @@ export default function Home() {
   return (
     <FadeInView style={styles.root}>
       <View>
-        <AnalyticsCard
+        <AnalyticsCardExpense
           amountPerDay={amountperDay || [0]}
           totalSpent={formattedExpenseSum.split(".")[0]}
         />

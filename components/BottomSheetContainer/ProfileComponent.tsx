@@ -30,6 +30,7 @@ export default function ProfileComponent() {
   const [name, setName] = useState(() => auth().currentUser?.displayName);
   const [uploadValue, setUploadValue] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+
   const onPickImage = async () => {
     ImagePicker.openPicker({
       width: 1000,

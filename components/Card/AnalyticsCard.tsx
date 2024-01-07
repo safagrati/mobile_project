@@ -7,13 +7,13 @@ import {
   useColorScheme,
 } from "react-native";
 import { More } from "../icons";
-import ChartTest from "../Expenses/Chart";
+import ChartTest from "../Expenses/ChartExpense";
 import { useState } from "react";
 import MenuComponents from "../MenuComponents";
 import { useWindowDimensions } from "react-native";
-import Card from "./Card";
+import { CardIncome, CardExpense } from "./Card";
 
-export default function AnalyticsCard({
+export function AnalyticsCardExpense({
   amountPerDay,
   totalSpent,
 }: {
@@ -42,12 +42,51 @@ export default function AnalyticsCard({
         snapToInterval={width} //your element width
         snapToAlignment={"center"}
       >
-        <Card amountPerDay={amountPerDay} totalSpent={totalSpent} />
-  
+        <CardExpense amountPerDay={amountPerDay} totalSpent={totalSpent} />
+
       </ScrollView>
     </View>
   );
 }
+
+
+
+export function AnalyticsCardIncome({
+  amountPerDay,
+  totalEarned,
+}: {
+  amountPerDay: number[];
+  totalEarned: string;
+}) {
+  const { height, width } = useWindowDimensions();
+  const theme = useColorScheme();
+
+  const isDarkTheme = theme === "dark";
+
+  return (
+    <View style={style.root}>
+      <View
+        style={[
+          style.backBox,
+          { backgroundColor: !isDarkTheme ? "#F6E6A6" : "#F6E6A63B" },
+        ]}
+      ></View>
+
+      <ScrollView
+        horizontal
+        style={{ width }}
+        showsHorizontalScrollIndicator={false}
+        decelerationRate={0}
+        snapToInterval={width} //your element width
+        snapToAlignment={"center"}
+      >
+        <CardIncome amountPerDay={amountPerDay} totalEarned={totalEarned} />
+
+      </ScrollView>
+    </View>
+  );
+}
+
 
 const style = StyleSheet.create({
   root: {

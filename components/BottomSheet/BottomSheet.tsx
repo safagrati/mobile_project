@@ -17,7 +17,7 @@ import CustomBackground from "./CustomBg";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { closeModal } from "../../redux/slice/modalSlice";
 
-import EditComponent from "../BottomSheetContainer/EditComponent";
+import { EditComponent } from "../BottomSheetContainer/EditComponent";
 
 import AddComponent from "../BottomSheetContainer/AddComponent";
 import Toast from "react-native-toast-message";
@@ -31,7 +31,7 @@ export const BottomSheetContainer = ({
 }) => {
 
   const snapPointListForAdd = ["40%", "95%",]
-  const snapPointListForEdit = [ "40%", "90%", ]
+  const snapPointListForEdit = ["40%", "90%",]
   const ModalState = useAppSelector((state) => state.modal);
   const dispatch = useAppDispatch();
   const sheetRef = useRef<BottomSheet>(null);
@@ -40,7 +40,7 @@ export const BottomSheetContainer = ({
 
   const theme = useColorScheme();
   const isDarkTheme = theme === "dark";
-  
+
 
   if (ModalState.id && ModalState.isOpen) {
     sheetRef.current?.snapToIndex(1);
@@ -48,15 +48,15 @@ export const BottomSheetContainer = ({
     sheetRef.current?.snapToIndex(1);
   }
 
- 
+
   const handleSheetChanges = useCallback((index: number) => {
-  
+
     if (index === -1) {
       dispatch(closeModal());
     }
 
-   
-   
+
+
   }, []);
 
   if (ModalState.isOpen === false) {
@@ -93,7 +93,7 @@ export const BottomSheetContainer = ({
 
   return (
     <>
-      
+
       <GestureHandlerRootView style={{ flex: 1 }}>
         <View style={styles.container}>
           {children}
@@ -116,7 +116,7 @@ export const BottomSheetContainer = ({
             <BottomSheetView
               style={[
                 styles.contentScreen,
-                
+
                 { backgroundColor: isDarkTheme ? "#161b22" : "white" },
               ]}
             >

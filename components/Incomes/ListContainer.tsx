@@ -30,7 +30,7 @@ export default function ListContainer({
 
     const formattedIncomeSum = new Intl.NumberFormat("en-NG", {
         style: "currency",
-        currency: "NGN",
+        currency: "TND",
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
     }).format(income.amount);

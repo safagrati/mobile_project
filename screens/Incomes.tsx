@@ -1,14 +1,14 @@
 import { View, StyleSheet, Button } from "react-native";
 
-import AnalyticsCard from "../components/Card/AnalyticsCard";
+import { AnalyticsCardIncome } from "../components/Card/AnalyticsCard";
 
 import IncomeComponent from "../components/Incomes/IncomeComponent";
 
 import { useAppSelector, useAppDispatch } from "../redux/hooks/hooks";
 import {
-    filterIncomeForCurrentWeek,
+    filterExpenseForCurrentWeek,
     getAmountsPerDay,
-    getAmountsPerDayIncomes,
+
     getLessThanDate,
     makeAmountList,
 } from "../util/date";
@@ -27,7 +27,7 @@ export default function Incomes() {
     const [error, setError] = useState<string | null>(null);
     const dispatch = useAppDispatch();
 
-    const thisweekincome = filterIncomeForCurrentWeek(incomeList);
+    const thisweekincome = filterExpenseForCurrentWeek(incomeList);
 
     const sortedIncome = thisweekincome.sort(
         (a, b) => Number(b.date) - Number(a.date)
@@ -38,14 +38,14 @@ export default function Incomes() {
     );
     const formattedIncomeSum = new Intl.NumberFormat("en-NG", {
         style: "currency",
-        currency: "NGN",
+        currency: "TND",
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
     }).format(incomeSum);
     let amountperDay;
     if (thisweekincome.length > 0) {
         amountperDay = makeAmountList(thisweekincome);
-        //console.log("🚀 ~ file: Home.tsx:32 ~ Home ~ amountperDay:", amountperDay);
+
     }
 
     useEffect(() => {
@@ -97,9 +97,9 @@ export default function Incomes() {
     return (
         <FadeInView style={styles.root}>
             <View>
-                <AnalyticsCard
+                <AnalyticsCardIncome
                     amountPerDay={amountperDay || [0]}
-                    totalSpent={formattedIncomeSum.split(".")[0]}
+                    totalEarned={formattedIncomeSum.split(".")[0]}
                 />
             </View>
             <View style={styles.sec}>

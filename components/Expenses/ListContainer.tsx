@@ -13,7 +13,7 @@ export default function ListContainer({
   expense: Expenses;
   periodName: string;
 }) {
-  
+
   const dispatch = useAppDispatch();
   const theme = useColorScheme();
 
@@ -34,7 +34,7 @@ export default function ListContainer({
 
   const formattedExpenseSum = new Intl.NumberFormat("en-NG", {
     style: "currency",
-    currency: "NGN",
+    currency: "TND",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(expense.amount);

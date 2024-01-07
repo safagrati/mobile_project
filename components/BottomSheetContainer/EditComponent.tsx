@@ -24,18 +24,18 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { DatePickerAndroid } from "./UI/DatePicker";
 import { Category } from "../../data/model";
 import { AnimatedButton } from "./UI/AnimateButton";
-import EditButtons from "./UI/EditButtons";
+import EditButtons from "../BottomSheetContainer/UI/EditButtons";
 import { updateExpense } from "../../redux/slice/expenseSlice";
 import { closeModal } from "../../redux/slice/modalSlice";
 import { AnimatedView } from "./UI/Animate";
 import { updateExpenseOnline } from "../../util/http";
 import LoadingOverlay from "../UI/LoadingOverlay";
 
-export default function EditComponent() {
+export function EditComponent() {
   const width = Dimensions.get("screen").width;
   const modalState = useAppSelector((state) => state.modal);
   const expense = useAppSelector((state) => state.expense.expenses);
-  const income = useAppSelector((state) => state.income.incomes);
+
   const dispatch = useAppDispatch();
   ////console.log(modalState.id);
   const [isFetching, setIsFetching] = useState(false);
@@ -155,7 +155,7 @@ export default function EditComponent() {
             label="Expense Name"
           />
           <InputText
-            icon={"₦"}
+            icon={"DT"}
             textInputConfig={{ keyboardType: "number-pad" }}
             invalid={!content.amount.isValid}
             value={content.amount.value || ""}

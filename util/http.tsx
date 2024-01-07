@@ -3,7 +3,10 @@ import axios from "axios";
 import { ExpenseAddState } from "../redux/slice/expenseSlice";
 import { IncomeAddState } from "../redux/slice/incomeSlice";
 
-const BACKEND_URL = "https://expense-ec0ce-default-rtdb.firebaseio.com";
+const BACKEND_URL1 = "https://expense-ec0ce-default-rtdb.firebaseio.com";
+const BACKEND_URL = "https://money-tracker-ce35a-default-rtdb.firebaseio.com";
+
+
 export async function storeExpense(expenseData: {
   name: string;
   date: Date;
@@ -19,6 +22,7 @@ export async function storeExpense(expenseData: {
   const id = response.data.name;
   return id;
 }
+
 
 export async function fetchExpenses() {
   const response = await axios.get(`${BACKEND_URL}/expenses.json`);

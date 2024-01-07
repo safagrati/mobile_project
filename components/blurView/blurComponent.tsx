@@ -11,6 +11,7 @@ import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
 import { ProfileNavigationProp, ProfileProp } from "../../types/navigation";
 import { resetExpense } from "../../redux/slice/expenseSlice";
+import { resetIncome } from "../../redux/slice/incomeSlice";
 import { ForbiddenIcon } from "../icons";
 
 export default function BlurComponent() {
@@ -23,6 +24,7 @@ export default function BlurComponent() {
     console.log(auth().currentUser);
     const colRef = firestore()
       .collection("expenses")
+
       .doc(auth().currentUser?.uid)
       .collection(new Date().getFullYear().toString());
     colRef.get().then((query) => {

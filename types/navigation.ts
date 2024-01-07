@@ -4,7 +4,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 export type RootStackParamList = {
   ExpenseApp: undefined;
   Profile: undefined;
-
+  Onboarding: undefined;
   BottomSheet: undefined;
 };
 
@@ -12,12 +12,14 @@ export type RootStackAuthParamList = {
   Login: undefined;
   Signup: undefined;
   Reset: undefined;
+  Onboarding: undefined;
 };
 
 export type ExpenseProp = NativeStackScreenProps<
   RootStackParamList,
   "ExpenseApp"
 >;
+
 export type ProfileProp = NativeStackScreenProps<RootStackParamList, "Profile">;
 export type LoginProp = NativeStackScreenProps<RootStackAuthParamList, "Login">;
 export type ResetProp = NativeStackScreenProps<RootStackAuthParamList, "Reset">;

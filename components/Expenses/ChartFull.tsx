@@ -4,7 +4,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { FadeInView } from "../FadeInView";
 import { getMonthsUpToCurrent } from "../../util/date";
 
-export default function ChartFull({expenseAmount}: {expenseAmount : number[]}) {
+export default function ChartFull({ expenseAmount }: { expenseAmount: number[] }) {
   const theme = useColorScheme();
 
   const isDarkTheme = theme === "dark";
@@ -21,7 +21,7 @@ export default function ChartFull({expenseAmount}: {expenseAmount : number[]}) {
         }}
         width={Dimensions.get("window").width - 50} // from react-native
         height={200}
-        yAxisLabel="₦"
+        yAxisLabel="DT"
         yAxisSuffix="k"
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{

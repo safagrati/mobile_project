@@ -18,7 +18,7 @@ export default function IncomeComponent({
     const incomeSum = incomes.reduce((acc, curr) => acc + curr.amount, 0);
     const formattedIncomeSum = new Intl.NumberFormat("en-NG", {
         style: "currency",
-        currency: "NGN",
+        currency: "TND",
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
     }).format(incomeSum);

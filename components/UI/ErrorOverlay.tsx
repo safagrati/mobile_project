@@ -3,6 +3,8 @@ import { ActivityIndicator, Button } from "react-native-paper";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { setExpense } from "../../redux/slice/expenseSlice";
 import { fetchExpenses } from "../../util/http";
+import { fetchIncomes } from "../../util/http";
+import { setIncome } from "../../redux/slice/incomeSlice";
 
 export default function ErrorOverlay({ error }: { error: string }) {
   const dispatch = useAppDispatch();
@@ -15,7 +17,9 @@ export default function ErrorOverlay({ error }: { error: string }) {
         style={{ marginTop: 20 }}
         onPress={async () => {
           const expenses = await fetchExpenses();
+          const incomes = await fetchIncomes();
           dispatch(setExpense(expenses));
+          dispatch(setIncome(incomes));
         }}
       >
         Retry
